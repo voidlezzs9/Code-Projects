@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy-first media downloader - No tracking, local processing only">
+    <title>Media Downloader - Privacy First</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Media Downloader</h1>
+            <p class="subtitle">Privacy-first media downloading</p>
+            <div class="header-actions">
+                <button class="btn-icon" id="settingsBtn" title="Settings">⚙️</button>
+                <button class="btn-icon" id="historyBtn" title="Download History">📥</button>
+                <button class="btn-icon" id="openFolderBtn" title="Open Downloads Folder">📁</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="card">
+                <form id="downloadForm">
+                    <div class="input-group">
+                        <input 
+                            type="url" 
+                            id="urlInput" 
+                            placeholder="Paste video URL here (YouTube, Instagram, TikTok, Twitter...)" 
+                            required
+                            autocomplete="off"
+                        >
+                        <button type="submit" id="downloadBtn" class="btn-primary">
+                            <span class="btn-text">Download</span>
+                            <span class="btn-loader" style="display: none;">⏳</span>
+                        </button>
+                    </div>
+
+                    <div class="format-options" id="formatOptions" style="display: none;">
+                        <div class="format-section">
+                            <label class="format-label">
+                                <input type="radio" name="format" value="best" checked>
+                                <span>Best Quality</span>
+                            </label>
+                            <label class="format-label">
+                                <input type="radio" name="format" value="audio">
+                                <span>Audio Only</span>
+                            </label>
+                        </div>
+                        <div class="quality-section" id="qualitySection" style="display: none;">
+                            <label for="qualitySelect" class="quality-label">Quality:</label>
+                            <select id="qualitySelect" name="quality">
+                                <option value="">Auto (Best Available)</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+                <div id="infoCard" class="info-card" style="display: none;">
+                    <div class="info-thumbnail" id="infoThumbnail"></div>
+                    <div class="info-details">
+                        <h3 id="infoTitle"></h3>
+                        <p id="infoMeta" class="info-meta"></p>
+                    </div>
+                </div>
+
+                <div id="progressContainer" style="display: none;">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span id="progressText">0%</span>
+                        <span id="progressDetails" class="progress-details"></span>
+                    </div>
+                </div>
+
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+
+            <!-- Download History -->
+            <div class="card history-card" id="historyCard" style="display: none;">
+                <div class="card-header">
+                    <h2>Download History</h2>
+                    <button class="btn-close" id="closeHistoryBtn">×</button>
+                </div>
+                <div id="downloadsList" class="downloads-list"></div>
+            </div>
+
+            <!-- Settings Panel -->
+            <div class="card settings-card" id="settingsCard" style="display: none;">
+                <div class="card-header">
+                    <h2>Settings</h2>
+                    <button class="btn-close" id="closeSettingsBtn">×</button>
+                </div>
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <label for="defaultFormat">Default Format:</label>
+                        <select id="defaultFormat">
+                            <option value="best">Best Quality</option>
+                            <option value="audio">Audio Only</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label for="defaultQuality">Default Quality:</label>
+                        <select id="defaultQuality">
+                            <option value="">Auto</option>
+                            <option value="1080p">1080p</option>
+                            <option value="720p">720p</option>
+                            <option value="480p">480p</option>
+                            <option value="360p">360p</option>
+                        </select>
+                    </div>
+                    <div class="setting-item">
+                        <label>
+                            <input type="checkbox" id="autoOpenFolder">
+                            Auto-open downloads folder after download
+                        </label>
+                    </div>
+                    <button class="btn-primary" id="saveSettingsBtn">Save Settings</button>
+                </div>
+            </div>
+
+            <div class="privacy-notice">
+                <h3>🔒 Privacy First</h3>
+                <ul>
+                    <li>✅ No tracking or analytics</li>
+                    <li>✅ All processing happens locally</li>
+                    <li>✅ No data sent to third parties</li>
+                    <li>✅ Open source & transparent</li>
+                </ul>
+            </div>
+
+            <div class="supported-platforms">
+                <h3>Supported Platforms</h3>
+                <div class="platform-tags">
+                    <span class="tag">YouTube</span>
+                    <span class="tag">Instagram</span>
+                    <span class="tag">TikTok</span>
+                    <span class="tag">Twitter/X</span>
+                    <span class="tag">Facebook</span>
+                    <span class="tag">And more...</span>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>All downloads are saved to your <code>downloads/</code> folder</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
